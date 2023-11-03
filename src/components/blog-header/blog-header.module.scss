@@ -1,0 +1,39 @@
+.header__wrapper {
+  background-color: white;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 26px;
+
+  .header__title {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+    margin-left: 22px;
+    margin-right: auto;
+    text-decoration: none;
+    color: black;
+  }
+  .header__signIn {
+    background: none;
+    border: none;
+    width: 109px;
+    height: 51px;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+    margin-right: 20px;
+  }
+  .header__signUp {
+    width: 109px;
+    height: 51px;
+    background: none;
+    border: 1px solid #52c41a;
+    border-radius: 5px;
+    color: #52c41a;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+    margin-right: 22px;
+  }
+}
