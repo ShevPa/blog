@@ -1,5 +1,6 @@
 import React from 'react';
 import { format } from 'date-fns';
+import { v4 as uuidv4 } from 'uuid';
 import classNames from 'classnames';
 import cl from './article-item.module.scss';
 import { Link } from 'react-router-dom';
@@ -39,7 +40,7 @@ const ArticleItem = ({
       </div>
       <div className={cl.article__tags}>
         {tags?.map((tag) => (
-          <span key={tag}>{tag}</span>
+          <span key={uuidv4()}>{tag}</span>
         ))}
       </div>
       <div className={cl.article__preview}>

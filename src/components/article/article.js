@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Markdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { useParams } from 'react-router-dom';
 import { loadArticle } from '../store/articleSlice';
 import ArticleItem from '../article-item/article-item';
@@ -12,7 +13,6 @@ const Article = () => {
     dispatch(loadArticle(slug));
   }, [dispatch, slug]);
   const { article, status, error } = useSelector((state) => state.article);
-  console.log(status);
   return (
     <div className={cl.articleCard}>
       {status === 'loading' && <h2>Loading...</h2>}
@@ -30,7 +30,7 @@ const Article = () => {
             avatar={article.author.image}
             inside={true}
           />
-          <Markdown>{article.body}</Markdown>
+          <Markdown remarkPlugins={[remarkGfm]}>{article.body}</Markdown>
         </div>
       )}
     </div>
