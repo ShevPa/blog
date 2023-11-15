@@ -16,6 +16,7 @@
   }
   .header__link {
     margin-right: 22px;
+    cursor: pointer;
   }
   .header__signIn {
     background: none;
@@ -51,7 +52,6 @@
       color: #52c41a;
       font-size: 14px;
       line-height: 22px;
-      margin-right: 26px;
     }
     .header__profile {
       display: flex;

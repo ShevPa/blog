@@ -16,7 +16,6 @@ const Profile = () => {
   const { status, user } = useSelector((state) => state.user);
   const onSubmit = (data) => {
     dispatch(updateUser(data));
-    console.log(data);
   };
   useEffect(() => {
     if (status === 'Completed') {

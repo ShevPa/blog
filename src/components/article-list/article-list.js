@@ -24,6 +24,7 @@ const ArticleList = () => {
           username={item.author.username}
           date={item.createdAt}
           avatar={item.author.image}
+          favorited={item.favorited}
           inside={false}
         />
       ))}

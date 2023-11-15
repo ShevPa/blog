@@ -12,7 +12,11 @@ const BlogHeader = () => {
         </Link>
         {localStorage?.getItem('token') ? (
           <div className={cl.header__withAuth}>
-            <button className={cl.header__createArticle}>Create article</button>
+            <Link to={'/new-article'} className={cl.header__link}>
+              <button className={cl.header__createArticle}>
+                Create article
+              </button>
+            </Link>
 
             <Link to={'/profile'} className={cl.header__profile}>
               <p className={cl.header__username}>{user.username}</p>

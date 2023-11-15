@@ -1,0 +1,23 @@
+.newArticle__wrapper {
+  display: flex;
+  justify-content: center;
+}
+.newArticle__container {
+  width: 938px;
+  min-height: 701px;
+  background-color: white;
+  border-radius: 6px;
+  border: 1px solid #d5d5d5;
+  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
+  padding: 48px 32px;
+  display: flex;
+  flex-direction: column;
+
+  .newArticle__title {
+    text-align: center;
+    font-size: 20px;
+    line-height: 28px;
+    margin: 0;
+    margin-bottom: 21px;
+  }
+}

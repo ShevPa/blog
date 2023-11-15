@@ -9,12 +9,16 @@ import Article from '../article/article';
 import SignUp from '../sign-up/sign-up';
 import SignIn from '../sign-in/sign-in';
 import Profile from '../profile/profile';
+import NewArticle from '../new-article/new-article';
+import PrivateAuth from '../hoc/privateAuth';
+import EditArticle from '../edit-article/edit-article';
 const App = () => {
   const dispatch = useDispatch();
   const { currentPage } = useSelector((state) => state.articles);
+  const { actionsCount } = useSelector((state) => state.article);
   useEffect(() => {
     dispatch(loadData(currentPage));
-  }, [currentPage, dispatch]);
+  }, [currentPage, dispatch, actionsCount]);
   return (
     <>
       <Routes>
@@ -22,9 +26,32 @@ const App = () => {
           <Route index element={<ArticleList />} />
           <Route path="articles" element={<Navigate to="/" replace />} />
           <Route path="articles/:slug" element={<Article />} />
+          <Route
+            path="articles/:slug/edit"
+            element={
+              <PrivateAuth>
+                <EditArticle />
+              </PrivateAuth>
+            }
+          />
           <Route path="sign-up" element={<SignUp />} />
           <Route path="sign-in" element={<SignIn />} />
-          <Route path="profile" element={<Profile />} />
+          <Route
+            path="profile"
+            element={
+              <PrivateAuth>
+                <Profile />
+              </PrivateAuth>
+            }
+          />
+          <Route
+            path="new-article"
+            element={
+              <PrivateAuth>
+                <NewArticle />
+              </PrivateAuth>
+            }
+          />
         </Route>
       </Routes>
     </>

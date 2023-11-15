@@ -9,10 +9,13 @@ import cl from './article.module.scss';
 const Article = () => {
   const { slug } = useParams();
   const dispatch = useDispatch();
+  const { article, status, error, actionsCount } = useSelector(
+    (state) => state.article,
+  );
   useEffect(() => {
     dispatch(loadArticle(slug));
-  }, [dispatch, slug]);
-  const { article, status, error } = useSelector((state) => state.article);
+  }, [dispatch, slug, actionsCount]);
+
   return (
     <div className={cl.articleCard}>
       {status === 'loading' && <h2>Loading...</h2>}
@@ -29,6 +32,11 @@ const Article = () => {
             date={article.createdAt}
             avatar={article.author.image}
             inside={true}
+            favorited={article.favorited}
+            isOwner={
+              article.author.username ===
+              JSON.parse(localStorage.getItem('user')).username
+            }
           />
           <Markdown remarkPlugins={[remarkGfm]}>{article.body}</Markdown>
         </div>

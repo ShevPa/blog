@@ -6,11 +6,26 @@ export const loadData = createAsyncThunk(
   async function (page, { rejectWithValue }) {
     try {
       const offset = (page - 1) * 20;
-      const { status, data } = await axios.get(
-        `https://blog.kata.academy/api/articles?offset=${offset}`,
-      );
-      if (status !== 200) throw new Error("Oop's something went wrong");
-      return data;
+      const token = JSON.parse(localStorage.getItem('token'));
+      if (token) {
+        const { status, data } = await axios.get(
+          `https://blog.kata.academy/api/articles?offset=${offset}`,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Token ${token}`,
+            },
+          },
+        );
+        if (status !== 200) throw new Error("Oop's something went wrong");
+        return data;
+      } else {
+        const { status, data } = await axios.get(
+          `https://blog.kata.academy/api/articles?offset=${offset}`,
+        );
+        if (status !== 200) throw new Error("Oop's something went wrong");
+        return data;
+      }
     } catch (error) {
       return rejectWithValue(error.message);
     }
