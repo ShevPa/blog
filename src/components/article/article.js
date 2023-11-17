@@ -35,7 +35,7 @@ const Article = () => {
             favorited={article.favorited}
             isOwner={
               article.author.username ===
-              JSON.parse(localStorage.getItem('user')).username
+              JSON.parse(localStorage.getItem('user'))?.username
             }
           />
           <Markdown remarkPlugins={[remarkGfm]}>{article.body}</Markdown>
